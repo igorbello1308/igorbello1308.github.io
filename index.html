@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Aniversário, Meu Amor! 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #ffe0e0, #f8c6d0);
+      color: #444;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Barra de navegação fixa no topo */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0c2c2;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: #d6336c;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 2px;
+      min-width: 70px;
+    }
+
+    nav button:hover, nav button.active {
+      background: #ffd6e0;
+      color: #a0204d;
+    }
+
+    /* Páginas */
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding: 80px 20px 40px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeIn 0.6s forwards;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin: 20px 0;
+      color: #d6336c;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 25px 0 15px;
+      color: #a0204d;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 15px auto;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* Grade de fotos */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 25px auto;
+      max-width: 500px;
+    }
+
+    .photo-grid .photo-placeholder:nth-child(3) {
+      grid-column: span 2;
+    }
+
+    @media (min-width: 600px) {
+      .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .photo-grid .photo-placeholder:nth-child(3) {
+        grid-column: span 1;
+      }
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 120px;
+      background: #ffd6e0;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a0204d;
+      font-size: 12px;
+      font-style: italic;
+      transition: all 0.3s;
+    }
+
+    .photo-placeholder:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Presente digital */
+    .gift-box {
+      width: 120px;
+      height: 80px;
+      background: #ff6b9d;
+      margin: 30px auto;
+      position: relative;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 6px 0 #d6336c;
+    }
+
+    .gift-box::before {
+      content: "🎁";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+    }
+
+    /* Botões de navegação inferior */
+    .nav-buttons {
+      margin-top: 30px;
+    }
+
+    .nav-buttons button {
+      background: #ff6b9d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 8px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsividade extra */
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      p { font-size: 1rem; }
+      nav button { font-size: 11px; padding: 5px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegação fixa no topo -->
+  <nav id="navbar">
+    <button onclick="showPage(0)">Início</button>
+    <button onclick="showPage(1)">Só Você</button>
+    <button onclick="showPage(2)">Nós Dois</button>
+    <button onclick="showPage(3)">Carta</button>
+    <button onclick="showPage(4)">Presente</button>
+    <button onclick="showPage(5)">Fim</button>
+  </nav>
+
+  <!-- Página 0: Capa -->
+  <div class="page active" data-index="0">
+    <h1>Feliz Aniversário, Meu Amor! 💖</h1>
+    <p>Uma pequena supresinha para você se lembrar o quanto é especial pra mim.</p>
+    <p>Clique nos botões acima para explorar nosso cantinho especial.</p>
+    <div class="nav-buttons">
+      <button onclick="showPage(1)">Começar →</button>
+    </div>
+  </div>
+
+  <!-- Página 1: Só Você (3 fotos dela) -->
+  <div class="page" data-index="1">
+    <h2>✨ Só Você</h2>
+    <p>
+você acorda cedo, encara o dia com dedicação,
+corre entre trabalho e estudos,
+e mesmo cansada…
+ainda encontra um tempinho pra mim.
+
+Suas piadas bobas me fazem rir como ninguém.
+A gente se entende com um olhar,
+conversa por horas e nunca falta assunto.
+É como se nossas almas já se conhecessem antes.
+
+E tem uma coisa que eu nunca vou entender direito:
+só de estar do seu lado, tudo dentro de mim se acalma.
+
+Hoje é seu dia.
+E eu só quero que você saiba:
+ver você ser quem é — forte, presente, verdadeira —
+já é um presente pra mim todos os dias. 
+
+</p>
+
+    <div class="photo-grid">
+      <div class="photo-placeholder">Foto 1 da Alanna</div>
+      <div class="photo-placeholder">Foto 2 da Alanna</div>
+      <div class="photo-placeholder">Foto 3 da Alanna</div>
+    </div>
+
+    <p> VOCÊ É INCRIVEL MEU AMOR, E MERECE O MUNDO!</p>
+    <div class="nav-buttons">
+      <button onclick="showPage(0)">← Voltar</button>
+      <button onclick="showPage(2)">Próximo →</button>
+    </div>
+  </div>
+
+  <!-- Página 2: Nós Dois (3 fotos juntos) -->
+  <div class="page" data-index="2">
+    <h2>💞 Nós Dois</h2>
+    <p> Sou feliz em te ter ao meu lado, meu bem.
+Com você, tudo faz mais sentido.
+Me sinto uma pessoa mais completa,
+e os nossos momentos juntos são a melhor parte do meu dia.
+    </p>
+
+    <div class="photo-grid">
+      <div class="photo-placeholder">Foto 1 de vocês</div>
+      <div class="photo-placeholder">Foto 2 de vocês</div>
+      <div class="photo-placeholder">Foto 3 de vocês</div>
+    </div>
+
+    <p></p>
+    <div class="nav-buttons">
+      <button onclick="showPage(1)">← Voltar</button>
+      <button onclick="showPage(3)">Próximo →</button>
+    </div>
+  </div>
+
+  <!-- Página 3: Carta -->
+  <div class="page" data-index="3">
+    <h2>💌 Uma Cartinha Pro Meu Amor</h2>
+    <p>Meu amor,
+
+Eu te desejo tudo de bom.
+Você é incrível e merece tudo que o mundo tem a oferecer.
+
+Me apaixonei por você desde o nosso primeiro olhar,
+e, a cada dia, esse amor só cresce mais e mais.
+
+Eu te escolho todos os dias.
+Seu jeito, sua personalidade, sua força, sua doçura…
+Tudo em você me encanta cada vez mais.
+
+Quero que você aproveite muito o seu dia.
+Esperei tanto por alguém como você
+que, até hoje, ainda não acredito que a gente namora — kkk!
+
+Esse é um mini textinho,
+mas é uma homenagem de verdade:
+pra você nunca esquecer o quanto é especial pra mim.
+
+(Estou escrevendo isso pra mandar no dia 19, mas já não vejo a hora!)
+
+Parabéns, meu amor.
+Eu te vivo! 💖</p>
+    <p>Com todo amor,<br><strong>Igor</strong></p>
+    <div class="nav-buttons">
+      <button onclick="showPage(2)">← Voltar</button>
+      <button onclick="showPage(4)">Próximo →</button>
+    </div>
+  </div>
+
+  
+  <!-- Página 4: Presente Digital -->
+  <div class="page" data-index="4">
+    <h2>🎁 Presente Digital</h2>
+    <p>Clique na caixinha pra receber seu presente!</p>
+    <div class="gift-box" onclick="openGift(this)"></div>
+    <p id="gift-message" style="opacity:0; transition: opacity 1s; margin-top: 20px;"></p>
+    <div class="nav-buttons">
+      <button onclick="showPage(3)">← Voltar</button>
+      <button onclick="showPage(5)">Próximo →</button>
+    </div>
+  </div>
+
+  <!-- Página 5: Final -->
+  <div class="page" data-index="5">
+    <h2>🎉 Feliz Aniversário, Meu Amor!</h2>
+    <p>Aproveita Muito seu dia, EU TE AMO!.</p>
+    <p> Igor </p>
+    <div class="nav-buttons">
+      <button onclick="showPage(4)">← Voltar</button>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 0;
+    const totalPages = 6;
+
+    function showPage(index) {
+      if (index < 0 || index >= totalPages) return;
+
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelector(`.page[data-index="${index}"]`).classList.add('active');
+
+      document.querySelectorAll('#navbar button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
+
+      currentPage = index;
+    }
+
+    function openGift(element) {
+      const msg = document.getElementById('gift-message');
+      element.style.transform = 'scale(0.8)';
+      element.style.opacity = '0.3';
+      setTimeout(() => {
+        msg.textContent = "Você é incrível. Me encanta seu jeito, sua força, suas piadas,e o fato de, mesmo cansada,sempre ter um tempinho pra mim.Eu te admiro todos os dias.E te escolho, de novo e de novo. (O Presente De Verdade Eu Ainda Vou Entregar KKAKSAKSA)";
+        msg.style.opacity = '1';
+      }, 400);
+    }
+
+    document.querySelector('#navbar button').classList.add('active');
+  </script>
+</body>
+</html>
